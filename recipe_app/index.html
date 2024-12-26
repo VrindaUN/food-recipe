@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-orange" href="#">Recipe App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Favorites</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+        </ul>
+        <form class="d-flex ms-lg-3">
+          <input class="form-control me-2" type="search" placeholder="Search recipes">
+          <button class="btn btn-orange" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center text-light d-flex align-items-center justify-content-center">
+    <div class="container">
+      <h1>Discover Recipes You'll Love</h1>
+      <p>Enter your ingredients or explore recipes for your mood!</p>
+      <button class="btn btn-orange mt-3">Explore Recipes</button>
+    </div>
+  </section>
+
+  <!-- Ingredients Search Section -->
+  <section class="container my-5">
+    <h2 class="text-orange text-center">Search Recipes by Ingredients</h2>
+    <form id="ingredients-form" class="mt-4">
+      <div class="input-group">
+        <input type="text" class="form-control" id="ingredients-input" placeholder="Enter ingredients (e.g., tomato, cheese)">
+        <button class="btn btn-orange" type="submit">Find Recipes</button>
+      </div>
+    </form>
+    <div id="recipes-container" class="row mt-4">
+      <!-- Recipe cards will be dynamically added here -->
+    </div>
+  </section>
+
+  <!-- Modal for Satisfaction Question -->
+<div class="modal fade" id="satisfactionModal" tabindex="-1" aria-labelledby="satisfactionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="satisfactionModalLabel">Are you satisfied with this recipe?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Would you like to try this recipe, or would you prefer some other suggestions?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Show me another recipe</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Yes, I want to try this recipe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Chat Interface -->
+<div class="chat-container" style="display:none;">
+    <div id="chat-box" class="chat-box">
+      <div class="chat-message bot-message">
+        <p>Hello! It looks like you are missing some ingredients. How can I assist you?</p>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-message" placeholder="Type your message..." class="form-control">
+      <button id="send-message" class="btn btn-primary">Send</button>
+    </div>
+  </div>
+
+  <!-- Mood-Based Recipes Section -->
+  <section class="container my-5">
+    <h2 class="text-orange text-center">Mood-Based Recipes</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <label for="mood-select" class="form-label">Select Your Mood</label>
+        <select class="form-select" id="mood-select">
+          <option value="" disabled selected>Select Mood</option>
+          <option value="comfort">Comfort Food</option>
+          <option value="quick">Quick Snacks</option>
+          <option value="healthy">Healthy Options</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-4" id="mood-recipes-container">
+      <!-- Cards for mood-based recipes will appear here -->
+    </div>
+  </section>
+
+  <!-- Testimonial Carousel Section -->
+  <section class="mt-5">
+    <div class="container">
+      <h2 class="text-orange text-center">What Our Users Say</h2>
+      <div id="testimonial-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <p class="text-center">"This app changed the way I cook! Easy to use and so many recipes." - User A</p>
+          </div>
+          <div class="carousel-item">
+            <p class="text-center">"No more food waste! I love finding recipes for what I have at home." - User B</p>
+          </div>
+          <div class="carousel-item">
+            <p class="text-center">"The mood-based recipes are spot on! Great idea." - User C</p>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-4">
+    <p>&copy; 2024 Recipe App. All Rights Reserved.</p>
+    <p>Follow us on:</p>
+    <a href="#"><i class="bi bi-facebook text-orange"></i></a>
+    <a href="#"><i class="bi bi-twitter text-orange"></i></a>
+    <a href="#"><i class="bi bi-instagram text-orange"></i></a>
+  </footer>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
